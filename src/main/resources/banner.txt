@@ -1,0 +1,10 @@
+____  ____  _           ____
+ / ___||  _ \| |         |  _ \  ___ _ __ ___   ___
+ \___ \| |_) | |   _____ | | | |/ _ \ '_ ` _ \ / _ \
+  ___) |  __/| |__|_____|| |_| |  __/ | | | | | (_) |
+ |____/|_|   |_____     |____/ \___|_| |_| |_|\___/
+
+Self-Signed Certificate Demo v1.0.0
+🔒 RSA 4096-bit SSL/TLS Certificate Generator & Server
+📦 Built with JDK 24 + GSON + Maven
+🚀 Ready for development and testing!

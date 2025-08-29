@@ -4,7 +4,7 @@ ____  ____  _           ____
   ___) |  __/| |__|_____|| |_| |  __/ | | | | | (_) |
  |____/|_|   |_____     |____/ \___|_| |_| |_|\___/
 
-Self-Signed Certificate Demo v1.0.0
+Self-Signed Certificate Demo v0.1-SNAPSHOT
 🔒 RSA 4096-bit SSL/TLS Certificate Generator & Server
 📦 Built with JDK 24 + GSON + Maven
 🚀 Ready for development and testing!

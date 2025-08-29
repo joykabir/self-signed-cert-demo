@@ -7,7 +7,7 @@
 
   <groupId>org.joykabir.ssl</groupId>
   <artifactId>self-signed-cert-demo</artifactId>
-  <version>1.0.0</version>
+  <version>0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Self-Signed Certificate Demo</name>
@@ -22,6 +22,7 @@
     <junit.version>4.13.2</junit.version>
     <assertj.version>3.25.3</assertj.version>
     <awaitility.version>4.2.1</awaitility.version>
+    <bouncycastle.version>1.78</bouncycastle.version>
   </properties>
 
   <dependencies>
@@ -49,6 +50,18 @@
       <groupId>org.apache.httpcomponents.client5</groupId>
       <artifactId>httpclient5</artifactId>
       <version>5.3.1</version>
+    </dependency>
+
+    <!-- BouncyCastle for Certificate Generation -->
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk18on</artifactId>
+      <version>${bouncycastle.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-jdk18on</artifactId>
+      <version>${bouncycastle.version}</version>
     </dependency>
 
     <!-- Testing Dependencies -->
@@ -100,8 +113,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.12.1</version>
         <configuration>
-          <source>24</source>
-          <target>24</target>
+          <source>15</source>
+          <target>15</target>
           <enablePreview>true</enablePreview>
         </configuration>
       </plugin>

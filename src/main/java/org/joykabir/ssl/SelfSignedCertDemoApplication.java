@@ -1,9 +1,10 @@
 package org.joykabir.ssl;
 
+import org.joykabir.ssl.cert.CertificateGenerationException;
 import org.joykabir.ssl.cert.CertificateGenerator;
+import org.joykabir.ssl.client.HttpsClient;
 import org.joykabir.ssl.config.AppConfig;
 import org.joykabir.ssl.server.HttpsServer;
-import org.joykabir.ssl.client.HttpsClient;
 import org.joykabir.ssl.testing.InteractiveTestRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -97,7 +98,7 @@ public class SelfSignedCertDemoApplication {
 					}
 				}
 				case "--version" -> {
-					System.out.println("Self-Signed Certificate Demo v1.0.0");
+					System.out.println("Self-Signed Certificate Demo v0.1-SNAPSHOT");
 					System.exit(0);
 				}
 				default -> {
@@ -179,10 +180,21 @@ public class SelfSignedCertDemoApplication {
 		}
 
 		// Generate certificate if requested or if keystore doesn't exist
+		// Generate certificate if requested or if keystore doesn't exist
 		if (generateCert || !Files.exists(Path.of(keystoreFile))) {
 			logger.info("🔑 Generating self-signed certificate...");
-			CertificateGenerator.generateCertificate(keystoreFile, keystorePassword);
-			logger.info("✅ Certificate generated: {}", keystoreFile);
+			try {
+				CertificateGenerator.generateCertificate(keystoreFile, keystorePassword);
+				logger.info("✅ Certificate generated: {}", keystoreFile);
+			} catch (CertificateGenerationException e) {
+				logger.error("❌ Certificate generation failed: {}", e.getMessage());
+
+				// Show available strategies
+				List<String> strategies = CertificateGenerator.getAvailableStrategies();
+				logger.info("💡 Available generation strategies: {}", strategies);
+
+				throw e; // Re-throw to stop application
+			}
 		}
 
 		if (startServer) {
